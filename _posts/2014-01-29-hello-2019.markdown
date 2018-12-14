@@ -16,7 +16,7 @@ tags:
 
 ## 前言
 
-感谢Github Pages，感谢**huxpro.github.io**
+感谢Github Pages，感谢**hux**，节约了很多重复造轮子的时间。
 
 
 
