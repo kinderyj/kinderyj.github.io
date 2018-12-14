@@ -2,8 +2,8 @@
 layout:     post
 title:      "Hello 2015"
 subtitle:   " \"Hello World, Hello Blog\""
-date:       2015-01-29 12:00:00
-author:     "Hux"
+date:       2018-12-14 12:00:00
+author:     "Kinderyj"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
