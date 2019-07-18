@@ -59,6 +59,7 @@ kramdown:
 
 
 # Disqus settings
+#
 disqus_username: hux
 
 # Netease settings
