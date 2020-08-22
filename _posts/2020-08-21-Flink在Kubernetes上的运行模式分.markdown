@@ -26,6 +26,7 @@ Flink native session模式
 Flink native per-job模式
 这四种部署模式的优缺点对比，可以用如下表格来概括，更多的内容，请参考接下来的详细描述。此外，Flink社区正在研发Flink Application模式，限于篇幅，本文不展开分析，感兴趣可以参与Flink Application Mode讨论。
 
+![avatar](https://github.com/kinderyj/kinderyj.github.io/blob/master/flinkmode1.png)
 
 
 ## 2.1. Session Cluster模式
