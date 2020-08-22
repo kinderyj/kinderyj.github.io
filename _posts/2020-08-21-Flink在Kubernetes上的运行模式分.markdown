@@ -1,7 +1,9 @@
-# 1. 前言
+# 1.前言
+
 Apache Flink是一个分布式流处理引擎，它提供了丰富且易用的API来处理有状态的流处理应用，并且在支持容错的前提下，高效、大规模的运行此类应用。通过支持事件时间(event-time)、计算状态(state)以及恰好一次(exactly-once)的容错保证，Flink迅速被很多公司采纳，成为了新一代的流计算处理引擎。2020年2月11日，社区发布了Flink 1.10.0版本, 该版本对性能和稳定性做了很大的提升，同时引入了native Kubernetes的特性。对于Flink的下一个稳定版本，社区在2020年4月底冻结新特性的合入，预计在2020年5-6月会推出Flink1.11，该版本重点关注新特性的合入（如FLIP-105，FLIP-115，FLIP-27等）与内核运行时的功能增强，以扩展Flink的使用场景和应对更复杂的应用逻辑。。
 
 ## 1.1. Flink为什么选择Kubernetes
+
 Kubernetes项目源自Google内部Borg项目，基于Borg多年来的优秀实践和其超前的设计理念，并凭借众多豪门、大厂的背书，时至今日，Kubernetes已经成长为容器管理领域的事实标准。在大数据及相关领域，包括Spark，Hive，Airflow，Kafka等众多知名产品正在迁往Kubernetes，Apache Flink也是其中一员。Flink选择Kubernetes作为其底层资源管理平台，原因包括两个方面：
 
 1）Flink特性：流式服务一般是常驻进程，经常用于电信网质量监控、商业数据即席分析、实时风控和实时推荐等对稳定性要求比较高的场景；
@@ -9,11 +11,13 @@ Kubernetes项目源自Google内部Borg项目，基于Borg多年来的优秀实�
 2）Kubernetes优势：为在线业务提供了更好的发布、管理机制，并保证其稳定运行，同时Kubernetes具有很好的生态优势，能很方便的和各种运维工具集成，如prometheus监控，主流的日志采集工具等；同时K8S在资源弹性方面提供了很好的扩缩容机制，很大程度上提高了资源利用率。
 
 ## 1.2. Flink on Kubernetes的发展历史
+
 在Flink的早期发行版1.2中，已经引入了Flink Session集群模式，用户得以将Flink集群部署在Kubernetes集群之上。随着Flink的逐渐普及，越来越多的Flink任务被提交在用户的集群中，用户发现在session模式下，任务之间会互相影响，隔离性比较差，因此在Flink 1.6版本中，推出了Per Job模式，单个任务独占一个Flink集群，很大的程度上提高了任务的稳定性。在满足了稳定性之后，用户觉得这两种模式，没有做到资源按需创建，往往需要凭用户经验来事先指定Flink集群的规格，在这样的背景之下，native session模式应用而生，在Flink 1.10版本进入Beta阶段，我们增加了native per job模式，在资源按需申请的基础上，提高了应用之间的隔离性。
 
 本文根据Flink在Kubernetes集群上的运行模式的趋势，依次分析了这些模式的特点，并在最后介绍了flink operator方案及其优势。
 
 # 2. Flink运行模式
+
 本文首先分析了Apache Flink 1.10在kubernetes集群上已经GA（生产可用）的两种部署模式，然后分析了处于Beta版本的native session部署模式和即将在Flink1.11发布的native per-job部署模式，最后根据这些部署模式的利弊，介绍了当前比较native kubernetes的部署方式，flink-operator。我们正在使用的Flink版本已经很好的支持了native session和native per-job两种模式，在flink-operator中，我们也对这两种模式也做了支持。接下来将按照以下顺序分析了Flink的运行模式，读者可以结合自身的业务场景，考量适合的Flink运行模式。
 
 Flink session模式
