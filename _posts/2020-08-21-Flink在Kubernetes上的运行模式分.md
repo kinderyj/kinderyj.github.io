@@ -38,7 +38,7 @@ Session模式下，Flink集群处于长期运行状态，当集群的Master组�
 
 
 
-添加描述
+![](http://yujunwang.top/img/in-post/flinkmode2.png)
 
 ### 2.1.2. 特点分析
 
@@ -52,7 +52,7 @@ Session模式下，Flink集群处于长期运行状态，当集群的Master组�
 
 
 
-添加描述
+![](http://yujunwang.top/img/in-post/flinkmode3.png)
 
 ### 2.2.1. 特点分析
 
@@ -71,7 +71,7 @@ Session模式下，Flink集群处于长期运行状态，当集群的Master组�
 ### 2.3.1. 原理分析
 
 
-添加描述
+![](http://yujunwang.top/img/in-post/flinkmode4.png)
 
 1）Flink提供了kubernetes模式的入口脚本kubernetes-session.sh，当用户执行了该脚本之后，Flink客户端会生成kubernets资源描述文件，包括FlinkMaster service，FlinkMaster deloyment，configmap，service，
 
@@ -104,7 +104,7 @@ Session模式下，Flink集群处于长期运行状态，当集群的Master组�
 ### 2.4.1. 原理分析
 
 
-添加描述
+![](http://yujunwang.top/img/in-post/flinkmode5.png)
 
 当任务被提交后，同样由flink来向kubernetes申请资源，其过程与之前提到的native session模式相似，不同之处在于，
 
@@ -133,7 +133,7 @@ native per-job cluster也是任务提交的时候才创建flink集群，不同�
 
 
 
-添加描述
+![](http://yujunwang.top/img/in-post/flinkmode6.png)
 
 通过使用Flink Operator，有如下优势：
 
