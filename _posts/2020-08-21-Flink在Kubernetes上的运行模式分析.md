@@ -1,3 +1,15 @@
+---
+layout: post
+title: "Flink on Kubernetes 运行模式分析"
+subtitle: "4种运行模式"
+author: "yujunwang"
+header-img: "img/post-bg-halting.jpg"
+header-mask: 0.3
+tags:
+  - 大数据
+  - Kubernetes
+---
+
 **1.前言**
 
 Apache Flink是一个分布式流处理引擎，它提供了丰富且易用的API来处理有状态的流处理应用，并且在支持容错的前提下，高效、大规模的运行此类应用。通过支持事件时间(event-time)、计算状态(state)以及恰好一次(exactly-once)的容错保证，Flink迅速被很多公司采纳，成为了新一代的流计算处理引擎。2020年2月11日，社区发布了Flink 1.10.0版本, 该版本对性能和稳定性做了很大的提升，同时引入了native Kubernetes的特性。对于Flink的下一个稳定版本，社区在2020年4月底冻结新特性的合入，预计在2020年5-6月会推出Flink1.11，该版本重点关注新特性的合入（如FLIP-105，FLIP-115，FLIP-27等）与内核运行时的功能增强，以扩展Flink的使用场景和应对更复杂的应用逻辑。。
