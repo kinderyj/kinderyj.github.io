@@ -60,7 +60,7 @@ kramdown:
 
 # Disqus settings
 #
-disqus_username: hux
+disqus_username: kinderyj
 
 # Netease settings
 netease_comment: false
@@ -80,7 +80,7 @@ netease_comment: false
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Descs"
-#sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+#sidebar-avatar: /img/avatar-kinderyj-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
